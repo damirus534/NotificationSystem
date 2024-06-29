@@ -1,0 +1,4 @@
+web/.idea/
+web/.mvn/
+web/target/
+web/src/main/resources/application.properties
