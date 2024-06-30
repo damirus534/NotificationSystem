@@ -1,4 +1,4 @@
-package damian.russok.web.user;
+package damian.russok.web.modules.user;
 
 import jakarta.persistence.*;
 import lombok.Data;
@@ -15,7 +15,7 @@ public class User {
     @Column(name = "login", nullable = false, length = 45)
     private String login;
     @Basic
-    @Column(name = "password", nullable = false, length = 45)
+    @Column(name = "password", nullable = false)
     private String password;
     @Basic
     @Column(name = "is_admin", nullable = false)

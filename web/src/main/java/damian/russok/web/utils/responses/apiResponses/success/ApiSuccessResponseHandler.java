@@ -1,4 +1,4 @@
-package damian.russok.web.utils.responseHandler.success;
+package damian.russok.web.utils.responses.apiResponses.success;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,7 +16,6 @@ public class ApiSuccessResponseHandler {
         ApiSuccessResponse apiSuccessResponse = new ApiSuccessResponse(
                 response.getMessage(),
                 response.getValue(),
-                response.getValueArr(),
                 acceptedHttpStatus,
                 actualTime()
         );
@@ -27,7 +26,6 @@ public class ApiSuccessResponseHandler {
         ApiSuccessResponse apiSuccessResponse = new ApiSuccessResponse(
                 response.getMessage(),
                 response.getValue(),
-                response.getValueArr(),
                 createdHttpStatus,
                 actualTime()
         );
@@ -39,7 +37,6 @@ public class ApiSuccessResponseHandler {
         ApiSuccessResponse apiSuccessResponse = new ApiSuccessResponse(
                 response.getMessage(),
                 response.getValue(),
-                response.getValueArr(),
                 okHttpStatus,
                 actualTime()
         );

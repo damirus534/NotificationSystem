@@ -1,4 +1,4 @@
-package damian.russok.web.utils.responseHandler.exceptions;
+package damian.russok.web.utils.responses.apiResponses.exceptions;
 
 public class ApiRequestException extends RuntimeException {
     public ApiRequestException(String message) {

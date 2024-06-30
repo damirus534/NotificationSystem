@@ -1,4 +1,4 @@
-package damian.russok.web.utils.responseHandler.exceptions;
+package damian.russok.web.utils.responses.apiResponses.exceptions;
 
 import lombok.Getter;
 import org.springframework.http.HttpStatus;

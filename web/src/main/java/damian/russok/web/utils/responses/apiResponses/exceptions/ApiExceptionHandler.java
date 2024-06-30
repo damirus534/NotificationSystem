@@ -1,4 +1,4 @@
-package damian.russok.web.utils.responseHandler.exceptions;
+package damian.russok.web.utils.responses.apiResponses.exceptions;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
