@@ -11,6 +11,7 @@ public class ApiFailureResponseHandler {
     private final HttpStatus validationErrorHttpStatus = HttpStatus.NOT_ACCEPTABLE;
     private final HttpStatus noPermissionHttpStatus = HttpStatus.FORBIDDEN;
     private final HttpStatus notFoundHttpStatus = HttpStatus.NOT_FOUND;
+    private final HttpStatus forbiddenHttpStatus = HttpStatus.FORBIDDEN;
 
     private ZonedDateTime actualTime() { return ZonedDateTime.now(); }
     public ResponseEntity<Object> handleApiRequestException(ApiRequestException e){
@@ -31,6 +32,11 @@ public class ApiFailureResponseHandler {
     public ResponseEntity<Object> handleNotFoundException(ApiRequestException e){
         ApiFailureResponse apiFailureResponse = new ApiFailureResponse(e.getMessage(), notFoundHttpStatus, actualTime());
         return new ResponseEntity<>(apiFailureResponse, notFoundHttpStatus);
+    }
+
+    public ResponseEntity<Object> handleForbiddenActionException(ApiRequestException e){
+        ApiFailureResponse apiFailureResponse = new ApiFailureResponse(e.getMessage(), forbiddenHttpStatus, actualTime());
+        return new ResponseEntity<>(apiFailureResponse, forbiddenHttpStatus);
     }
 
 }

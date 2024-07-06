@@ -1,6 +1,7 @@
 package web.spring.api.modules.user;
 
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
@@ -44,10 +45,12 @@ public class User implements Serializable {
 
     @OneToMany(mappedBy = "notifiedLogin", fetch=FetchType.EAGER)
     @Fetch(value = FetchMode.SUBSELECT)
+    @JsonManagedReference(value = "user-ntf")
     private List<Notification> userNotifications;
 
     @OneToMany(mappedBy = "assignedLogin", fetch=FetchType.EAGER)
     @Fetch(value = FetchMode.SUBSELECT)
+    @JsonManagedReference(value = "user-assi")
     private List<Notification> notificationsAssigned;
 
     public User(){
@@ -66,7 +69,7 @@ public class User implements Serializable {
     public User(String login, String password) {
         this.login = login;
         this.password = password;
-        this.isAdmin = true;
+        this.isAdmin = false;
         this.mobileAppAccess = false;
         this.modifyNtfAddr = false;
         this.modifyNtfDate = false;

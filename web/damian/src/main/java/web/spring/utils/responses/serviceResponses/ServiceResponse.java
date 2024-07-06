@@ -13,7 +13,7 @@ import web.spring.utils.responses.apiResponses.success.ApiSuccessReturn;
 public class ServiceResponse<T> {
 
     public enum ServiceResponseStatus{
-        SUCCESS, ACCEPTED, CREATED, VALIDATION_ERROR, DUPLICATE, NO_PERMISSION, UNKNOWN_ERROR, NOT_FOUND
+        SUCCESS, ACCEPTED, CREATED, VALIDATION_ERROR, DUPLICATE, NO_PERMISSION, UNKNOWN_ERROR, NOT_FOUND, FORBIDDEN_ACTION
     }
 
     private final ServiceResponseStatus responseStatus;
@@ -35,6 +35,7 @@ public class ServiceResponse<T> {
             case VALIDATION_ERROR : return new ApiFailureResponseHandler().handleValidationErrorException(new ApiRequestException(message));
             case NO_PERMISSION : return new ApiFailureResponseHandler().handleNoPermissionException(new ApiRequestException(message));
             case NOT_FOUND : return new ApiFailureResponseHandler().handleNotFoundException(new ApiRequestException(message));
+            case FORBIDDEN_ACTION: return new ApiFailureResponseHandler().handleForbiddenActionException(new ApiRequestException(message));
             default: return new ApiFailureResponseHandler().handleApiRequestException(new ApiRequestException(message));
         }
     }

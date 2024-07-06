@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8"/>
     <title>Admin Page</title>
-    <link rel="stylesheet" type="text/css" href="/css/admin.css"></link>
+    <link rel="stylesheet" type="text/css" href="/css/mainpanel.css"></link>
 </head>
 <body>
     <t:if test="hasPermission">

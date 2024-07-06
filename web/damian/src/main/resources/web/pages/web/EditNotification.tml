@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd"
+      xmlns:p="tapestry:parameter">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Edit User Permissions</title>
+    <link rel="stylesheet" type="text/css" href="/css/edituser.css"></link>
+</head>
+<body>
+    <t:if test="hasPermission">
+        <h1 class="header">Edit notification</h1>
+
+    </t:if>
+    <t:if test="!hasPermission">
+        <div class="no-permission">
+            <h2>Access Denied</h2>
+            <p>You do not have permission to access this page.</p>
+        </div>
+    </t:if>
+</body>
+</html>

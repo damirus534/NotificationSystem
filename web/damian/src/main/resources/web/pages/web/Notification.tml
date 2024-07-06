@@ -4,8 +4,8 @@
     xmlns:p="tapestry:parameter">
 <head>
     <meta charset="UTF-8"/>
-    <title>Notification Page</title>
-    <link rel="stylesheet" type="text/css" href="/css/notification.css"></link>
+    <title>Admin Page</title>
+    <link rel="stylesheet" type="text/css" href="/css/mainpanel.css"></link>
 </head>
 <body>
     <t:if test="hasPermission">
@@ -13,7 +13,50 @@
             <h1>Notifiaction Page</h1>
         </header>
         <main>
-            <p>Notification page in built</p>
+            <div class="form-table">
+                <t:actionlink class="link-insert" t:id="createNotificationLink">Create Notification</t:actionlink>
+            </div>
+            <h2 class="centered-header">Active Notifications</h2>
+            <t:if test="isEmptyList()">
+                <div class="error-message">
+                    <p>${formErrorMessage}</p>
+                </div>
+            </t:if>
+            <t:if test="!isEmptyList()">
+                <t:form t:id="notifform">
+                    <t:if test="hasErrors()">
+                        <div class="error-message-container">
+                            <div class="error-message">${formErrorMessage}</div>
+                        </div>
+                    </t:if>
+                    <div class="form-table">
+                        <div class="display-table">
+                            <div class="table-header">
+                                <div>Creation date</div>
+                                <div>Assigned user</div>
+                                <div>Content</div>
+                                <div>Address</div>
+                                <div> </div>
+                                <div> </div>
+                            </div>
+                            <t:loop source="notificationsToDisplay" value="notification">
+                                <div class="table-row">
+                                    <div class="date-column">${notification.date}</div>
+                                    <div class="assigned-login-column">${notification.assignedLogin.login}</div>
+                                    <div class="content-column">${notification.content}</div>
+                                    <div class="address-column">${notification.address}</div>
+                                    <div>
+                                        <t:actionlink t:id="editLink" t:context="notification.notificationId" class="button-link">Edit</t:actionlink>
+                                    </div>
+                                    <div>
+                                        <t:actionlink t:id="deleteLink" t:context="notification.notificationIdStr" class="button-link">Delete</t:actionlink>
+                                    </div>
+                                </div>
+                            </t:loop>
+                        </div>
+                    </div>
+                </t:form>
+            </t:if>
         </main>
         <footer>
             <p>© Damian Russok Link Technology recruitment web application</p>

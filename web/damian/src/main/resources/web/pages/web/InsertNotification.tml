@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd">
+<head>
+    <meta charset="UTF-8"/>
+    <title>User Insertion Page</title>
+    <link rel="stylesheet" type="text/css" href="/css/insertuser.css"></link>
+</head>
+<body>
+    <t:if test="hasPermission">
+        <header>
+            <h1>User Insertion Page</h1>
+        </header>
+        <main>
+            <t:form t:id="insertForm">
+                <t:if test="hasErrors()">
+                    <div class="error-message">${formErrorMessage}</div>
+                </t:if>
+                <div class="form-container">
+                    <div class="form-field">
+                        <t:label for="address">Address:</t:label>
+                        <t:textfield t:id="address" value="address" />
+                    </div>
+                    <div class="form-field">
+                        <t:label for="login">Assigned user:</t:label>
+                        <t:textfield t:id="login" value="login" />
+                    </div>
+                    <div class="form-field">
+                        <t:label for="content">Content:</t:label>
+                        <t:textfield t:id="content" value="content" />
+                    </div>
+                    <div class="form-button">
+                        <t:submit value="Insert Notification" />
+                    </div>
+                </div>
+            </t:form>
+        </main>
+        <footer>
+            <p>© Damian Russok Link Technology recruitment web application</p>
+        </footer>
+    </t:if>
+    <t:if test="!hasPermission">
+        <div class="no-permission">
+            <h2>Access Denied</h2>
+            <p>You do not have permission to access this page.</p>
+        </div>
+    </t:if>
+</body>
+</html>
