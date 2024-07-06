@@ -51,7 +51,7 @@ public class Admin {
             hasPermission = true;
             ServiceResponse<List<User>> findUsersResponse = userService.findAllUsers(user.getLogin());
             if(findUsersResponse.isSuccess()){
-                usersToDisplay = findUsersResponse.getValue();//AdminGridUser.AdminGridListFromUserList(findUsersResponse.getValue());
+                usersToDisplay = findUsersResponse.getValue();
             }else{
                 permissionFormErrorMessage = findUsersResponse.getMessage();
             }

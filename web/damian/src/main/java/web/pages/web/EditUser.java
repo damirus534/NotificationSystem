@@ -2,10 +2,7 @@ package web.pages.web;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.apache.tapestry5.annotations.Component;
-import org.apache.tapestry5.annotations.InjectComponent;
-import org.apache.tapestry5.annotations.PageActivationContext;
-import org.apache.tapestry5.annotations.Property;
+import org.apache.tapestry5.annotations.*;
 import org.apache.tapestry5.corelib.components.Checkbox;
 import org.apache.tapestry5.corelib.components.Form;
 import org.slf4j.Logger;
@@ -26,33 +23,87 @@ public class EditUser {
     @Property
     private User user;
 
+    private User adminUser;
+
     @Component
     private Form editForm;
+
+    @Property
+    private boolean hasPermission;
+
+    @Property
+    private boolean validationFailed;
+
+    @Property
+    private String formErrorMessage = "";
 
     @Property
     private boolean isAdmin;
     @Property
     private boolean hasMobileAccess;
 
+    @Property
+    private boolean modifyNtfAddr;
+    @Property
+    private boolean modifyNtfDate;
+    @Property
+    private boolean modifyNtfContent;
+    @Property
+    private boolean modifyNtfAssiuser;
+
+    @InjectPage
+    private Admin admin;
+
     private UserService userService = SpringUtils.ctx.getBean(UserService.class);
 
     private static final Logger logger = LoggerFactory.getLogger(Admin.class);
 
     void onActivate() {
-        try{
-            Pair<User, User> pageEntries = ArgumentsEncryptionUtils
-                    .decryptToObjectPair(usersJson,User.class, User.class);
-            isAdmin = pageEntries.getSecond().isAdmin();
-            hasMobileAccess = pageEntries.getSecond().isMobileAppAccess();
-        }catch (Exception ex){
-            ex.printStackTrace();
+        hasPermission = true;
+        Pair<User, User> pageEntries = ArgumentsEncryptionUtils
+                .decryptToObjectPair(usersJson,User.class, User.class);
+        if (pageEntries == null || pageEntries.getFirst() == null || pageEntries.getSecond() == null){
+            hasPermission = false;
+        }else{
+            adminUser = pageEntries.getFirst();
+            user = pageEntries.getSecond();
+            isAdmin = user.isAdmin();
+            hasMobileAccess = user.isMobileAppAccess();
+            modifyNtfAddr = user.isModifyNtfAddr();
+            modifyNtfContent = user.isModifyNtfContent();
+            modifyNtfDate = user.isModifyNtfDate();
+            modifyNtfAssiuser = user.isModifyNtfAssiuser();
         }
     }
 
+    void onValidateFromEditForm(){
+        user.setAdmin(isAdmin);
+        user.setMobileAppAccess(hasMobileAccess);
+        user.setModifyNtfAddr(modifyNtfAddr);
+        user.setModifyNtfContent(modifyNtfContent);
+        user.setModifyNtfAssiuser(modifyNtfAssiuser);
+        user.setModifyNtfDate(modifyNtfDate);
+        ServiceResponse<User> editUserResponse = userService.editUser(user);
+        if (!editUserResponse.isSuccess()){
+            handleError(editUserResponse.getMessage());
+        }
+    }
 
-    void onSuccessFromEditForm() {
-        logger.info("success", user.toString());
-        logger.info("success value", isAdmin);
+    private void handleError(String errorMessage){
+        editForm.recordError("record error to not emit onSuccess");
+        validationFailed = true;
+        formErrorMessage = errorMessage;
+    }
+
+    public boolean hasErrors() {
+        return editForm.getHasErrors();
+    }
+
+    Object onSuccessFromEditForm() {
+        validationFailed = false;
+        editForm.clearErrors();
+        admin.setUserJson(ArgumentsEncryptionUtils.encryptToJson(adminUser));
+        return admin;
     }
 
 

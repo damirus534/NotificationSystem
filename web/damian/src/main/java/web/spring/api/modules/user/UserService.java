@@ -73,5 +73,15 @@ public class UserService {
         return new ServiceResponse<>(SUCCESS, "Found " + foundUsers.size() + " users", foundUsers);
     }
 
+    public ServiceResponse<User> editUser(User user){
+        User editedUser;
+        try{
+            editedUser = userRepository.saveAndFlush(user);
+        }catch (Exception ex){
+            return new ServiceResponse<>(UNKNOWN_ERROR, "Unexpected error occurred: "+ex.getLocalizedMessage(), null);
+        }
+        return new ServiceResponse<>(SUCCESS, "User "+user.getLogin()+" edited successfully", editedUser);
+    }
+
 
 }

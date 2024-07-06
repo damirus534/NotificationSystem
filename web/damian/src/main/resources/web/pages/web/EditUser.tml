@@ -4,25 +4,65 @@
 <head>
     <meta charset="UTF-8"/>
     <title>Edit User Permissions</title>
+    <link rel="stylesheet" type="text/css" href="/css/edituser.css"></link>
 </head>
 <body>
-    <header>
-        <h1>Edit User Permissions</h1>
-    </header>
-    <main>
+    <t:if test="hasPermission">
+        <h1 class="header">Edit ${user.login} Permissions</h1>
         <t:form t:id="editForm">
-            <div>
-                <label for="adminCheckbox">Admin</label>
-                <t:checkbox t:id="isAdmin" t:value="isAdmin" id="adminCheckbox" />
+            <t:if test="hasErrors()">
+                <div class="error-message-container">
+                    <div class="error-message">${formErrorMessage}</div>
+                </div>
+            </t:if>
+            <div class="form-table">
+                <div class="display-table">
+                    <div class="tr">
+                        <div class="td name-cell">Admin</div>
+                        <div class="td checkbox-cell">
+                            <t:checkbox value="isAdmin"/>
+                        </div>
+                    </div>
+                    <div class="tr">
+                        <div class="td name-cell">Mobile Access</div>
+                        <div class="td checkbox-cell">
+                            <t:checkbox value="hasMobileAccess"/>
+                        </div>
+                    </div>
+                    <div class="tr">
+                        <div class="td name-cell">Modify Address</div>
+                        <div class="td checkbox-cell">
+                            <t:checkbox value="modifyNtfAddr"/>
+                        </div>
+                    </div>
+                    <div class="tr">
+                        <div class="td name-cell">Modify Content</div>
+                        <div class="td checkbox-cell">
+                            <t:checkbox value="modifyNtfContent"/>
+                        </div>
+                    </div>
+                    <div class="tr">
+                        <div class="td name-cell">Modify Assigned User</div>
+                        <div class="td checkbox-cell">
+                            <t:checkbox value="modifyNtfAssiuser"/>
+                        </div>
+                    </div>
+                    <div class="tr">
+                        <div class="td name-cell">Modify Date</div>
+                        <div class="td checkbox-cell">
+                            <t:checkbox value="modifyNtfDate"/>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div>
-                <label for="mobileCheckbox">Mobile</label>
-                <t:checkbox t:id="hasMobileAccess" t:value="hasMobileAccess" id="mobileCheckbox" />
-            </div>
-            <div>
-                <t:submit value="Save" />
-            </div>
+            <button type="submit" class="save-button">Save</button>
         </t:form>
-    </main>
+    </t:if>
+    <t:if test="!hasPermission">
+        <div class="no-permission">
+            <h2>Access Denied</h2>
+            <p>You do not have permission to access this page.</p>
+        </div>
+    </t:if>
 </body>
 </html>

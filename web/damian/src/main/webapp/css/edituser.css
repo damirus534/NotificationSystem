@@ -9,7 +9,7 @@ body {
 
 .display-table {
     display: table;
-    width: 80%;
+    width: 25%;
     /*margin: 0 auto;*/
     border-collapse: separate;
     border-spacing: 0;
@@ -18,75 +18,86 @@ body {
     overflow:hidden;
 }
 
-.display-table > .table-header,
-.display-table > .table-row {
-    display: table-row;
+.form-table {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 20px;
 }
 
-.display-table > .table-header > div,
-.display-table > .table-row > div {
+
+.td {
     display: table-cell;
-    padding: 5px;
-    border: 1px solid #ccc;
-    text-align: center;
-    vertical-align: middle;
+    padding: 10px;
 }
 
-.display-table > .table-header > div {
+.tr {
+    display: table-row;
+    background-color: #f9f9f9;
+}
+
+.td:last-child {
+    border-bottom: none;
+}
+.header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.name-cell {
+    width: 70%;
+    text-align: left;
+    padding-left: 15px;
     background-color: #f9f9f9;
     font-weight: bold;
 }
-
-.display-table > .table-row > div {
-    background-color: #fff;
+.checkbox-cell {
+    width: 30%;
+    text-align: center;
+    padding-right: 15px;
 }
-
-.display-table input[type="checkbox"] {
+.checkbox-cell input[type="checkbox"] {
     transform: scale(1.2);
 }
-
-.vertical-grid {
-    display: grid;
-    grid-template-columns: auto auto;
-    gap: 10px;
-    justify-content: center;
-    align-items: center;
-    width: 80%;
-    margin: 20px auto;
-    border: 2px solid #ccc; /* Grubsze, szare obramowanie */
-    border-radius: 10px;
-    padding: 20px;
-}
-
-.vertical-grid div {
-    display: contents;
-}
-
-.vertical-grid label {
-    text-align: right;
-    padding-right: 10px;
-}
-
-.vertical-grid t\\:checkbox {
-    text-align: left;
-}
-
 .save-button {
-    display: inline-block;
-    padding: 8px 16px;
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
     font-size: 14px;
     font-weight: 600;
-    text-align: center;
-    text-decoration: none;
-    color: #fff;
-    background-color: #007bff;
-    border: 1px solid transparent;
-    border-radius: 4px;
-    cursor: pointer;
-    grid-column: span 2;
-    justify-self: center;
 }
-
 .save-button:hover {
     background-color: #0056b3;
+}
+
+.no-permission {
+    text-align: center;
+    margin: 0 auto;
+    max-width: 400px;
+    padding: 20px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.error-message-container {
+    display: flex;
+    justify-content: center;
+}
+
+.error-message {
+    color: #a94442;
+    background-color: #f2dede;
+    border: 1px solid #ebccd1;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 4px;
+    text-align: center;
+    width: 25%;
 }
