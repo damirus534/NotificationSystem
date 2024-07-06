@@ -36,6 +36,8 @@ public class Admin {
     private User user;
     @InjectPage
     private EditUser editUser;
+    @InjectPage
+    private InsertUser insertUserPage;
     @Component(id="permform")
     private Form permform;
     @Property
@@ -74,6 +76,12 @@ public class Admin {
         );
         editUser.setUsersJson(usersJson);
         return editUser;
+    }
+
+    @OnEvent(component = "insertUserLink")
+    Object onInsertUser() {
+        insertUserPage.setUserJson(ArgumentsEncryptionUtils.encryptToJson(user));
+        return insertUserPage;
     }
 
 }

@@ -13,6 +13,9 @@
             <h1>Admin Page</h1>
         </header>
         <main>
+            <div class="form-table">
+                <t:actionlink class="link-insert" t:id="insertUserLink">Insert User</t:actionlink>
+            </div>
             <h2 class="centered-header">Permissions management</h2>
             <t:if test="isEmptyList()">
                 <div class="error-message">
