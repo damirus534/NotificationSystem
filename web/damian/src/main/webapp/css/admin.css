@@ -1,0 +1,128 @@
+header, footer {
+    text-align: center;
+    width: 100%;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+.no-permission {
+    text-align: center;
+    margin: 0 auto;
+    max-width: 400px;
+    padding: 20px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.display-table {
+    display: table;
+    width: 80%;
+    /*margin: 0 auto;*/
+    border-collapse: separate;
+    border-spacing: 0;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    overflow:hidden;
+}
+
+.display-table > .table-header,
+.display-table > .table-row {
+    display: table-row;
+}
+
+.display-table > .table-header > div,
+.display-table > .table-row > div {
+    display: table-cell;
+    padding: 5px;
+    border: 1px solid #ccc;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.display-table > .table-header > div {
+    background-color: #f9f9f9;
+    font-weight: bold;
+}
+
+.display-table > .table-row > div {
+    background-color: #fff;
+}
+
+.display-table input[type="checkbox"] {
+    transform: scale(1.2);
+}
+
+.login-column {
+    width: 20%;
+}
+
+.mobile-column,
+.admin-column {
+    width: 10%;
+    pointer-events: none;
+}
+
+.modify-address-column,
+.modify-content-column,
+.modify-assigned-user-column,
+.modify-date-column {
+    width: 15%;
+    pointer-events: none;
+}
+
+.form-table {
+    display: flex;
+    justify-content: center;
+}
+
+
+.form-actions {
+    text-align: center;
+    margin-top: 2em;
+}
+
+.centered-submit {
+    margin: 1em auto; /* Ustawienie marginesów do auto dla centrowania */
+    padding: 0.5em 1em;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 0.3em;
+    cursor: pointer;
+    display: block; /* Ustawienie jako blokowy, aby margin: auto zadziałał */
+    width: 200px; /* Szerokość przycisku, dostosuj według potrzeb */
+}
+
+.centered-submit:hover {
+    background-color: #0056b3;
+}
+
+.error-message {
+    text-align: center;
+    font-size: 1.2em;
+}
+
+.centered-header {
+    text-align: center;
+}
+
+.button-link {
+    display: inline-block;
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    color: #fff;
+    background-color: #007bff;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.button-link:hover {
+    background-color: #0056b3;
+}

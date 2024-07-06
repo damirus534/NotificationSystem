@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html
+    xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd"
+    xmlns:p="tapestry:parameter">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Notification Page</title>
+    <link rel="stylesheet" type="text/css" href="/css/notification.css"></link>
+</head>
+<body>
+    <t:if test="hasPermission">
+        <header>
+            <h1>Notifiaction Page</h1>
+        </header>
+        <main>
+            <p>Notification page in built</p>
+        </main>
+        <footer>
+            <p>© Damian Russok Link Technology recruitment web application</p>
+        </footer>
+    </t:if>
+    <t:if test="!hasPermission">
+        <div class="no-permission">
+            <h2>Access Denied</h2>
+            <p>You do not have permission to access this page.</p>
+        </div>
+    </t:if>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html
+    xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd"
+    xmlns:p="tapestry:parameter">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Login Page</title>
+    <link rel="stylesheet" type="text/css" href="/css/login.css"></link>
+</head>
+<body>
+    <header>
+        <h1>Login Page</h1>
+    </header>
+    <main>
+        <t:form t:id="lform">
+            <t:if test="hasErrors()">
+                <div class="error-message">${formErrorMessage}</div>
+            </t:if>
+            <div>
+                <t:label for="username">Login:</t:label>
+                <t:textfield t:id="username" value="username" />
+            </div>
+            <div>
+                <t:label for="password">Password:</t:label>
+                <t:passwordfield t:id="password"  value="password"/>
+            </div>
+            <div>
+                <t:submit value="Login" />
+            </div>
+        </t:form>
+    </main>
+    <footer>
+        <p>© Damian Russok Link Technology recruitment web application</p>
+    </footer>
+</body>
+</html>

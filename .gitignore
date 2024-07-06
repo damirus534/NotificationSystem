@@ -1,4 +1,10 @@
-web/.idea/
-web/.mvn/
-web/target/
-web/src/main/resources/application.properties
+web/damian/.idea/
+web/damian/.mvn/
+web/damian/.gradle/
+web/damian/.settings/
+web/damian/build/
+web/damian/out/
+web/damian/target/
+web/damian/src/main/resources/application.properties
+web/damian/.classpath
+web/damian/.project

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd"
+      xmlns:p="tapestry:parameter">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Edit User Permissions</title>
+</head>
+<body>
+    <header>
+        <h1>Edit User Permissions</h1>
+    </header>
+    <main>
+        <t:form t:id="editForm">
+            <div>
+                <label for="adminCheckbox">Admin</label>
+                <t:checkbox t:id="isAdmin" t:value="isAdmin" id="adminCheckbox" />
+            </div>
+            <div>
+                <label for="mobileCheckbox">Mobile</label>
+                <t:checkbox t:id="hasMobileAccess" t:value="hasMobileAccess" id="mobileCheckbox" />
+            </div>
+            <div>
+                <t:submit value="Save" />
+            </div>
+        </t:form>
+    </main>
+</body>
+</html>
