@@ -45,8 +45,6 @@ public class EditUser {
     @Property
     private boolean modifyNtfAddr;
     @Property
-    private boolean modifyNtfDate;
-    @Property
     private boolean modifyNtfContent;
     @Property
     private boolean modifyNtfAssiuser;
@@ -71,7 +69,6 @@ public class EditUser {
             hasMobileAccess = user.isMobileAppAccess();
             modifyNtfAddr = user.isModifyNtfAddr();
             modifyNtfContent = user.isModifyNtfContent();
-            modifyNtfDate = user.isModifyNtfDate();
             modifyNtfAssiuser = user.isModifyNtfAssiuser();
         }
     }
@@ -82,7 +79,6 @@ public class EditUser {
         user.setModifyNtfAddr(modifyNtfAddr);
         user.setModifyNtfContent(modifyNtfContent);
         user.setModifyNtfAssiuser(modifyNtfAssiuser);
-        user.setModifyNtfDate(modifyNtfDate);
         ServiceResponse<User> editUserResponse = userService.editUser(user);
         if (!editUserResponse.isSuccess()){
             handleError(editUserResponse.getMessage());

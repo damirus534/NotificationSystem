@@ -10,6 +10,7 @@ import web.spring.api.modules.user.User;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.ArrayList;
 
 @Entity
 @Table(name = "Notifications")
@@ -25,31 +26,15 @@ public class Notification {
     @Column(name = "date", nullable = false)
     private Timestamp date;
     @ManyToOne
-    @ToString.Exclude
-    @JsonBackReference(value = "user-ntf")
     @JoinColumn(name = "notified_login", nullable = false, referencedColumnName = "login")
     private User notifiedLogin;
     @ManyToOne
-    @ToString.Exclude
-    @JsonBackReference(value = "user-assi")
     @JoinColumn(name = "assigned_login", nullable = false, referencedColumnName = "login")
     private User assignedLogin;
     @Basic
-    @Column(name = "content", nullable = false)
+    @Column(name = "content", nullable = false, length = 2000)
     private String content;
     @Basic
     @Column(name = "address", nullable = false)
     private String address;
-
-    private String notificationIdStr;//need to tapestry action recognition (edit/delete)
-
-    public Notification(long notificationId, Timestamp date, User notifiedLogin, User assignedLogin, String content, String address) {
-        this.notificationId = notificationId;
-        this.date = date;
-        this.notifiedLogin = notifiedLogin;
-        this.assignedLogin = assignedLogin;
-        this.content = content;
-        this.address = address;
-        this.notificationIdStr = String.valueOf(notificationId);
-    }
 }

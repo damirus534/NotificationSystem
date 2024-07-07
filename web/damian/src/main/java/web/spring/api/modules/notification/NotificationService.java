@@ -68,5 +68,24 @@ public class NotificationService {
         return new ServiceResponse<>(SUCCESS, "Notification added successfully", notification);
     }
 
+    public ServiceResponse<Notification> editNotification(Notification notification, String newAssignedLogin) {
+        if (notification.getNotifiedLogin().getLogin().equals(newAssignedLogin)) {
+            return new ServiceResponse<>(FORBIDDEN_ACTION, "You cannot assign a notification to yourself", null);
+        }
+
+        User assignedUser = userRepository.findByLogin(newAssignedLogin);
+        if (assignedUser == null) {
+            return new ServiceResponse<>(FORBIDDEN_ACTION, "User that you try to assign does not exist", null);
+        }
+
+        if (!AddressValidator.isPolishAddressValid(notification.getAddress())) {
+            return new ServiceResponse<>(VALIDATION_ERROR, "Invalid address format. Expected format: any text 00-000 any text.", null);
+        }
+        notification.setAssignedLogin(assignedUser);
+        notificationRepository.saveAndFlush(notification);
+
+        return new ServiceResponse<>(SUCCESS, "Notification updated successfully", notification);
+    }
+
 
 }

@@ -4,12 +4,49 @@
 <head>
     <meta charset="UTF-8"/>
     <title>Edit User Permissions</title>
-    <link rel="stylesheet" type="text/css" href="/css/edituser.css"></link>
+    <link rel="stylesheet" type="text/css" href="/css/insertuser.css"></link>
 </head>
 <body>
     <t:if test="hasPermission">
-        <h1 class="header">Edit notification</h1>
-
+        <header>
+            <h1>Edit notification</h1>
+        </header>
+        <t:form t:id="editForm">
+            <t:if test="hasErrors()">
+                <div class="error-message">${formErrorMessage}</div>
+            </t:if>
+            <div class="form-container">
+                <div class="form-field">
+                    <t:label for="address">Address:</t:label>
+                    <t:textfield t:id="address" t:disabled="!user.modifyNtfAddr" value="address" />
+                </div>
+                <div class="form-field">
+                    <t:label for="login">Assigned user:</t:label>
+                    <t:textfield t:id="login" t:disabled="!user.modifyNtfAssiuser" value="login" />
+                </div>
+                <div class="form-field">
+                    <t:label for="content">Content:</t:label>
+                    <t:textfield t:id="content" t:disabled="!user.modifyNtfContent" value="content" />
+                </div>
+                <div class="form-button">
+                    <t:submit value="Edit Notification" />
+                </div>
+            </div>
+        </t:form>
+        <header>
+            <h1>Delete Notification</h1>
+        </header>
+        <t:form t:id="deleteForm" class="delete-form">
+            <t:if test="hasDeleteErrors()">
+                <div class="error-message">${deleteFormErrorMessage}</div>
+            </t:if>
+            <div class="centered">
+                <t:submit value="Delete Notification" class="red-button" />
+            </div>
+        </t:form>
+        <footer>
+            <p>© Damian Russok Link Technology recruitment web application</p>
+        </footer>
     </t:if>
     <t:if test="!hasPermission">
         <div class="no-permission">
@@ -18,4 +55,5 @@
         </div>
     </t:if>
 </body>
+
 </html>

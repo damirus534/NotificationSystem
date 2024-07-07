@@ -14,6 +14,7 @@ import web.spring.utils.responses.serviceResponses.ServiceResponse;
 import web.spring.utils.routing.ArgumentsEncryptionUtils;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -75,17 +76,14 @@ public class Notification {
     }
 
     Object onActionFromEditLink(Long notificationId) {
-        String usersJson = ArgumentsEncryptionUtils.encryptToJson(user, findNotificationInList(notificationId));
+        web.spring.api.modules.notification.Notification notification = findNotificationInList(notificationId);
+        notification.getAssignedLogin().setUserNotifications(new ArrayList<>());
+        notification.getNotifiedLogin().setUserNotifications(new ArrayList<>());
+        user.setUserNotifications(new ArrayList<>());
+        user.setNotificationsAssigned(new ArrayList<>());
+        String usersJson = ArgumentsEncryptionUtils.encryptToJson(user, notification);
         editNotificationPage.setEntryJson(usersJson);
         return editNotificationPage;
-    }
-
-    Object onActionFromDeleteLink(String notificationIdStr) {
-        ServiceResponse<Object> deleteNotificationResponse = notificationService.deleteNotification(findNotificationInList(Long.parseLong(notificationIdStr)));
-        if (!deleteNotificationResponse.isSuccess()){
-            handleError(deleteNotificationResponse.getMessage());
-        }
-        return this;
     }
 
     private void handleError(String errorMessage){

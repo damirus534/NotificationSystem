@@ -1,8 +1,10 @@
 package web.spring.api.modules.user;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
+import lombok.ToString;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 import web.spring.api.modules.notification.Notification;
@@ -34,9 +36,6 @@ public class User implements Serializable {
     @Column(name = "modify_ntf_addr", nullable = false)
     private boolean modifyNtfAddr;
     @Basic
-    @Column(name = "modify_ntf_date", nullable = false)
-    private boolean modifyNtfDate;
-    @Basic
     @Column(name = "modify_ntf_content", nullable = false)
     private boolean modifyNtfContent;
     @Basic
@@ -45,12 +44,14 @@ public class User implements Serializable {
 
     @OneToMany(mappedBy = "notifiedLogin", fetch=FetchType.EAGER)
     @Fetch(value = FetchMode.SUBSELECT)
-    @JsonManagedReference(value = "user-ntf")
+    @JsonIgnore
+    @ToString.Exclude
     private List<Notification> userNotifications;
 
     @OneToMany(mappedBy = "assignedLogin", fetch=FetchType.EAGER)
     @Fetch(value = FetchMode.SUBSELECT)
-    @JsonManagedReference(value = "user-assi")
+    @JsonIgnore
+    @ToString.Exclude
     private List<Notification> notificationsAssigned;
 
     public User(){
@@ -59,7 +60,6 @@ public class User implements Serializable {
         this.isAdmin = false;
         this.mobileAppAccess = false;
         this.modifyNtfAddr = false;
-        this.modifyNtfDate = false;
         this.modifyNtfContent = false;
         this.modifyNtfAssiuser = false;
         this.userNotifications = List.of();
@@ -72,7 +72,6 @@ public class User implements Serializable {
         this.isAdmin = false;
         this.mobileAppAccess = false;
         this.modifyNtfAddr = false;
-        this.modifyNtfDate = false;
         this.modifyNtfContent = false;
         this.modifyNtfAssiuser = false;
         this.userNotifications = List.of();

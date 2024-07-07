@@ -47,16 +47,13 @@
                             <t:checkbox value="modifyNtfAssiuser"/>
                         </div>
                     </div>
-                    <div class="tr">
-                        <div class="td name-cell">Modify Date</div>
-                        <div class="td checkbox-cell">
-                            <t:checkbox value="modifyNtfDate"/>
-                        </div>
-                    </div>
                 </div>
             </div>
             <button type="submit" class="save-button">Save</button>
         </t:form>
+        <footer>
+            <p>© Damian Russok Link Technology recruitment web application</p>
+        </footer>
     </t:if>
     <t:if test="!hasPermission">
         <div class="no-permission">

@@ -37,7 +37,6 @@
                                 <div>Content</div>
                                 <div>Address</div>
                                 <div> </div>
-                                <div> </div>
                             </div>
                             <t:loop source="notificationsToDisplay" value="notification">
                                 <div class="table-row">
@@ -46,10 +45,7 @@
                                     <div class="content-column">${notification.content}</div>
                                     <div class="address-column">${notification.address}</div>
                                     <div>
-                                        <t:actionlink t:id="editLink" t:context="notification.notificationId" class="button-link">Edit</t:actionlink>
-                                    </div>
-                                    <div>
-                                        <t:actionlink t:id="deleteLink" t:context="notification.notificationIdStr" class="button-link">Delete</t:actionlink>
+                                        <t:actionlink t:id="editLink" t:context="notification.notificationId" class="button-link">Edit/Delete</t:actionlink>
                                     </div>
                                 </div>
                             </t:loop>

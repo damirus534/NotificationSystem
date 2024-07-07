@@ -33,7 +33,6 @@
                                 <div>Modify Address</div>
                                 <div>Modify Content</div>
                                 <div>Modify Assigned user</div>
-                                <div>Modify Date</div>
                                 <div> </div>
                             </div>
                             <t:loop source="usersToDisplay" value="user">
@@ -53,9 +52,6 @@
                                     </div>
                                     <div class="modify-assigned-user-column">
                                         <t:checkbox value="user.modifyNtfAssiuser"/>
-                                    </div>
-                                    <div class="modify-date-column">
-                                        <t:checkbox value="user.modifyNtfDate"/>
                                     </div>
                                     <div>
                                         <t:actionlink t:id="editLink" t:context="user.login" class="button-link">Edit</t:actionlink>
