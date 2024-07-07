@@ -69,7 +69,14 @@ public class NotificationService {
     }
 
     public ServiceResponse<Notification> editNotification(Notification notification, String newAssignedLogin) {
-        if (notification.getNotifiedLogin().getLogin().equals(newAssignedLogin)) {
+        return editNotification(notification, newAssignedLogin, true);
+    }
+
+    /**
+     * @param checkAssignment for mobile false. Assigned user can reassign notification to another user
+     */
+    public ServiceResponse<Notification> editNotification(Notification notification, String newAssignedLogin, boolean checkAssignment) {
+        if (checkAssignment && notification.getNotifiedLogin().getLogin().equals(newAssignedLogin)) {
             return new ServiceResponse<>(FORBIDDEN_ACTION, "You cannot assign a notification to yourself", null);
         }
 
@@ -82,9 +89,23 @@ public class NotificationService {
             return new ServiceResponse<>(VALIDATION_ERROR, "Invalid address format. Expected format: any text 00-000 any text.", null);
         }
         notification.setAssignedLogin(assignedUser);
-        notificationRepository.saveAndFlush(notification);
+        try {
+            Notification notificationInDB = notificationRepository.findById(notification.getNotificationId()).get();
+            notification.setDate(notificationInDB.getDate());
+            notification = notificationRepository.saveAndFlush(notification);
+        }catch (Exception ex){
+            return new ServiceResponse<>(UNKNOWN_ERROR, "Unexpected error occurred: "+ex.getLocalizedMessage(), null);
+        }
 
         return new ServiceResponse<>(SUCCESS, "Notification updated successfully", notification);
+    }
+
+    public ServiceResponse<List<Notification>> findNotificationsAssignedToUser(String login) {
+        List<Notification> notifications = notificationRepository.findByAssignedLoginLogin(login);
+        if (notifications.isEmpty()) {
+            return new ServiceResponse<>(NOT_FOUND, "There are no notifications assigned for you", null);
+        }
+        return new ServiceResponse<>(SUCCESS, "Found " + notifications.size() + " notifications", notifications);
     }
 
 

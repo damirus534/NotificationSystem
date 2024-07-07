@@ -1,9 +1,9 @@
 package web.spring.api.modules.notification;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+import web.spring.api.modules.user.User;
 import web.spring.utils.responses.apiResponses.exceptions.ApiFailureResponseHandler;
 
 @CrossOrigin
@@ -17,5 +17,15 @@ public class NotificationController {
     @Autowired
     public NotificationController(NotificationService notificationService) {
         this.notificationService = notificationService;
+    }
+
+    @GetMapping("/assigned/{login}")
+    public ResponseEntity<Object> getNotificationsAssignedForUser(@PathVariable String login) {
+        return notificationService.findNotificationsAssignedToUser(login).toApiReturn();
+    }
+
+    @PostMapping("/edit")
+    public ResponseEntity<Object> editNotification(@RequestBody Notification notification){
+        return notificationService.editNotification(notification, notification.getAssignedLogin().getLogin(), false).toApiReturn();
     }
 }

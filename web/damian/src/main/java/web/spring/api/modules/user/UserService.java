@@ -49,6 +49,10 @@ public class UserService {
     }
 
     public ServiceResponse<User> checkCredentials(String login, String password) {
+        return checkCredentials(login, password, false);
+    }
+
+    public ServiceResponse<User> checkCredentials(String login, String password, Boolean checkMobilePermission) {
         Pair<Boolean, String> loginValidation = validateInputWithPlainText(login.trim(), LOGIN);
         if (!loginValidation.getFirst()) {
             return new ServiceResponse<>(VALIDATION_ERROR, loginValidation.getSecond(), null);
@@ -60,6 +64,9 @@ public class UserService {
         }
         if (!passwordEncoder.matches(password, loggedUser.getPassword())){
             return new ServiceResponse<>(VALIDATION_ERROR, "Password is incorrect", null);
+        }
+        if(checkMobilePermission && !loggedUser.isMobileAppAccess()){
+            return new ServiceResponse<>(NO_PERMISSION, "Nie posiadasz uprawnień aby korzystać z modułu mobilnego", null);
         }
         loggedUser.setPassword(null);
         return new ServiceResponse<>(ACCEPTED, "User credentials confirmed", loggedUser);

@@ -24,9 +24,14 @@ public class UserController {
         return userService.registerUser(user.getLogin(), user.getPassword()).toApiReturn();
     }
 
-    @PostMapping("/test")
-    public ResponseEntity<String> test(){
-        return ResponseEntity.ok("elolol");
+    @PostMapping("/login")
+    public ResponseEntity<Object> checkCredentials(@RequestBody User user) {
+        return userService.checkCredentials(user.getLogin(), user.getPassword(), true).toApiReturn();
+    }
+
+    @GetMapping("/all")
+    public ResponseEntity<Object> getAllUsers() {
+        return userService.findAllUsers("").toApiReturn();
     }
 
 }

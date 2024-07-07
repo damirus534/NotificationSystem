@@ -10,4 +10,6 @@ import java.util.List;
 public interface NotificationRepository  extends JpaRepository<Notification, Long>  {
 
     List<Notification> findAllByNotifiedLogin(User notifiedLogin);
+
+    List<Notification> findByAssignedLoginLogin(String assignedLogin);
 }
