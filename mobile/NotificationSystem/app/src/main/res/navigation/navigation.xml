@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/notificationListFragment">
+
+    <fragment
+        android:id="@+id/notificationListFragment"
+        android:name="pl.drussok.notificationsystem.ui.notifications.list.NotificationListFragment"
+        android:label="Assigned notifications" >
+        <action
+            android:id="@+id/action_notificationListFragment_to_notificationEditFragment"
+            app:destination="@id/notificationEditFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/notificationEditFragment"
+        android:name="pl.drussok.notificationsystem.ui.notifications.edit.NotificationEditFragment"
+        android:label="Notification Edit"
+        tools:layout="@layout/fragment_notification_edit" >
+        <argument
+            android:name="notification"
+            app:argType="pl.drussok.notificationsystem.infrastructure.remote.models.Notification" />
+    </fragment>
+</navigation>
