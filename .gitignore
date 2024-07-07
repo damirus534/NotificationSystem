@@ -8,3 +8,7 @@ web/damian/target/
 web/damian/src/main/resources/application.properties
 web/damian/.classpath
 web/damian/.project
+mobile/NotificationSystem/.gradle/
+mobile/NotificationSystem/.idea/
+mobile/NotificationSystem/gradle/wrapper
+mobile/NotificationSystem/app/build
