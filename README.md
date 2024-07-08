@@ -100,6 +100,7 @@ Zadanie 10.5 ✅
 - Dodałbym możliwość uzunięcia bezpośrednio zgłoszenia z tabeli. Miałem problem z Action-linkiem, który nie działał prawidłowo w loopie, nawet nadając unikalny context.
 - Czysto kodowo to zrobiłbym porządek z plikami css i tml przygotowywując gotowe componenty layoutów. Stworzyłbym także klasy po których bym dziedziczył aby nie kopiować tyle kodu w moich klikach Page.java
 - Obsługa strony 404
+- Stworzył system paginacji dla list i tabel
 
 # Serwer
 Spełnia swoją role jako bufor między aplikacjami klienckimi a bazą danych.
@@ -139,6 +140,59 @@ Zadanie 6 ✅
 
 ### Ekran edycji notyfikacji - Z błędem
 <img width="213" alt="image" src="https://github.com/damirus534/NotificationSystem/assets/61499883/38e5d13f-753e-4cad-8001-50e3e537ac99">
+
+## Opis
+Aplikacja mobilna umożliwia logowanie do systemu. Sprawdza dostęp do aplikacji w formie uprawnienia na użytkowniku.
+Zadanie 8 ✅
+
+Aplikacja mobilna wyświetla liste z przypisanymi dla zalogowanego użytkownika zgłoszeniami.
+Zadanie 9 ✅
+
+Aplikacja mobilna pozwala na edycje zgłoszenia. Pozwala tylko na edycje pól tych, dla których użytkownik ma uprawnienia.
+Zadanie 10 ✅
+
+Aplikacja mobilna uruchamia mape z nawigacją do adresu zapisanego w zgłoszeniu
+Zadanie 11 ✅
+
+## Poprawki i usprawnienia które zrobiłbym posiadając więcej czasu.
+- Zaprojektował widoki horyzontalne
+- Stworzył klasy do czytelniejszej obsługi odpowiedzi z serwera
+- Dla listy z zgłoszeniami zaimplementował system paginacji.
+- Przygotował testy jednostkowe
+- Poprawił walidatory i zrobił je bardziej generyczne
+
+# Instalacja i testy
+## Projekt Springowy i Tapestry
+Należy:
+Samodzielnie uruchomić baze MariaDB.
+Pobrać projekt, następnie otworzyć w IDE.
+Skonfigurować plik application.properties w folderze web\damian\src\main\resources.
+To jest moja konfiguracja.
+```
+server.port:8080
+
+#db - credentials
+spring.datasource.url=jdbc:mariadb://localhost:3306/recrutainmentdb?useSSL=false
+spring.datasource.username=root
+spring.datasource.password=root
+#db - config
+spring.jpa.database-platform=org.hibernate.dialect.MariaDBDialect
+--spring.jpa.hibernate.ddl-auto=create-drop --to odkomentować przy pierwszym uruchomieniu
+spring.jpa.hibernate.ddl-auto=update --to zakomentować przy pierwszym uruchomieniu
+logging.level.org.hibernate.sql=DEBUG
+logging.level.org.springframework.jdbc.core=DEBUG
+spring.jpa.hibernate.naming.physical-strategy=org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+
+``` 
+## Aplikacja mobilna
+Aplikacja mobilna ma tak skonfigurowane połączenie z serwerem (bo jest lokalnie) że działa tylko z emulatora AVD. Dlatego wymagane jest także uruchomienie projektu z Android Studio IDE na wirtualnej maszynie
+
+# Podsumowanie
+Bardzo dobrze sie bawiłem w trakcie tworzenia tego projektu. Na pewno nabyłem umiejętności bardziej wnikliwego czytania dokumentacji, bo w przypadku Tapestry nie jest ona rozległa. Szczerze mówiąc to przed
+realizacją tego projektu nawet nie słyszałem o takim narzędziu do tworzenia stron internetowych. Z tego powodu zdecydowaną większość czasu poświęciłem właśnie na warstwę aplikacji przeglądarkowej, gdyż musiałem się tego nauczyć.
+
+Życzę miłego testowania. W przypadku napotkania problemów proszę o kontakt na mój nr. telefonu.
+
 
 
 
