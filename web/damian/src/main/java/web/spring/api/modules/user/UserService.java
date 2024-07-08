@@ -66,7 +66,7 @@ public class UserService {
             return new ServiceResponse<>(VALIDATION_ERROR, "Password is incorrect", null);
         }
         if(checkMobilePermission && !loggedUser.isMobileAppAccess()){
-            return new ServiceResponse<>(NO_PERMISSION, "Nie posiadasz uprawnień aby korzystać z modułu mobilnego", null);
+            return new ServiceResponse<>(NO_PERMISSION, "You don't have permission to use mobile application", null);
         }
         loggedUser.setPassword(null);
         return new ServiceResponse<>(ACCEPTED, "User credentials confirmed", loggedUser);
