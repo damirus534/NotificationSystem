@@ -63,6 +63,95 @@ zgłoszeniu.
 ### Panel Zgłoszeniowy (dla użytkowników)
 <img width="955" alt="image" src="https://github.com/damirus534/NotificationSystem/assets/61499883/c1d7e38e-0d7a-404d-b92f-88f2d98de14a">
 
+### Panel Zgłoszeniowy - dodawanie zgłoszeń 
+<img width="955" alt="image" src="https://github.com/damirus534/NotificationSystem/assets/61499883/43677c28-82bf-4758-82d2-5bffc29b953a">
+
+### Panel Zgłoszeniowy - dodawanie zgłoszeń - odrzucona walidacja
+<img width="955" alt="image" src="https://github.com/damirus534/NotificationSystem/assets/61499883/cf9fa2b9-7c98-4069-9eb5-df537fbb0c46">
+
+### Panel Zgłoszeniowy - edycja i usuwanie notyfikacji 
+<img width="956" alt="image" src="https://github.com/damirus534/NotificationSystem/assets/61499883/3cbb6595-9575-4c2c-97c7-1a6d86eceb6c">
+
+
+## Opis
+Aplikacja webowa pozawala na logowanie użytkowników do aplikacji
+Zadanie 4 ✅
+
+Aplikacja webowa posiada funkcjonalność CRUD dla modelu zgłoszenia (wraz z sprawdzaniem uprawnień)
+Zadanie 5 ✅
+
+Aplikacja webowa posiada możliwość tworzenia użytkowników wraz z loginami i hasłami. 
+Zadanie 7 ✅
+
+Aplikacja webowa pozwala na konfiguracje uprawnień do edycji pól zgłoszeń i dostępu do aplikacji mobilnej
+Zadanie 10.5 ✅
+
+## Dodatkowo
+- Aplikacja webowa posiada zabezpieczenia do poruszania się między stronami. Po przejściu na adres, który wymaga konkretnych obiektów wystąpi błąd i zostanie wyświetlony komunikat.
+### Strona z brakiem dostępu do strony
+<img width="956" alt="image" src="https://github.com/damirus534/NotificationSystem/assets/61499883/5b0a86cc-3df1-45e3-80d0-8d540dc50c63">
+
+- Aplikacja webowa posiada zabezpieczenie w postaci szyfrowania dla obiektów przekazywanych jako @PageActivationContext w url.
+### Przykładowy url z zaszyfrowanymi danymi
+``` http://localhost:8080/web/notification/ntyVr2Gb4aftUhNAhTde20ttXjHFPi7stG4savhKY1npzACGMLXjXK6AkBXQgCOIi$002brQL17dgukmQuuBsbX5hNOu$002fWcwGXd2GotdtV5t5aYzvw1HEu9BtvqRSTztf0kO0S8F$002f$002b7BXi5eiwko$002fRGFDg1zraYaLh5fiUM524GmrVuXSZCBPJpjRn6xgbSbHAu6XJmlU2WUFxv29TMh1Raerg$003d$003d ```
+
+## Poprawki/Usprawnienia, które wprowadziłbym jakby było więcej czasu
+- Spróbowałbym jeszcze raz zrobić grida z checkboxami, który edytowałby się na bieżąco. Miałem problem z dwustronnym bindingiem. Pojawiał się błąd z read-only property, która miała poprawnie ustawiony getter i setter.
+- Dodałbym możliwość uzunięcia bezpośrednio zgłoszenia z tabeli. Miałem problem z Action-linkiem, który nie działał prawidłowo w loopie, nawet nadając unikalny context.
+- Czysto kodowo to zrobiłbym porządek z plikami css i tml przygotowywując gotowe componenty layoutów. Stworzyłbym także klasy po których bym dziedziczył aby nie kopiować tyle kodu w moich klikach Page.java
+- Obsługa strony 404
+
+# Serwer
+Spełnia swoją role jako bufor między aplikacjami klienckimi a bazą danych.
+## Opis
+Serwer łączy się z bazą danych MariaDB
+Zadanie 3 ✅
+
+Serwer wystawia API REST-owe do pobierania zgłoszeń. W zasadzie też użytkowników. Pozwala na edycje notyfikacji
+Zadanie 6 ✅
+
+## Dodatkowo
+- Stworzono dwie klasy z testami jednostkowymi
+
+## Poprawki/Usprawnienia które wprowadziłbym jakby było więcej czasu
+- Stworzyłbym system czasowych tokenów autoryzujących użytkownika - sesje
+- Poprawić odpowiedzi z kontrolerów, aby tam były typy generyczne
+- Stworzyłbym filtr dla requestów, które są błędne, aby odpowiedzi trafiające z serwera z błędami były bardziej "fancy"
+- Przygotowałbym testy dla kluczowych metod. Niestety nie pisze w formie TDD, więc testowanie jest dla mnie czasochłonne
+- Zrobiłbym bardziej rozbudowaną obsługę wyjątków, które mogę wystąpić w systemie, aby użytkownik wiedział lepiej co poszło nie tak
+
+# Aplikacja mobilna
+## Ekrany
+### Logowanie
+<img width="212" alt="image" src="https://github.com/damirus534/NotificationSystem/assets/61499883/878f1735-f5bd-4103-9f3c-a725a2850268">
+
+### Logowanie - Z błędem
+<img width="209" alt="image" src="https://github.com/damirus534/NotificationSystem/assets/61499883/a2179ae7-68bf-495f-bd09-4e327ea94d0e">
+
+### Logowanie - Puste pola
+<img width="211" alt="image" src="https://github.com/damirus534/NotificationSystem/assets/61499883/310e8cde-ce3e-47af-8989-a31351a75451">
+
+### Ekran z przypisanymi do zalogowanego użytkownika notyfikacjami
+<img width="215" alt="image" src="https://github.com/damirus534/NotificationSystem/assets/61499883/00fc5fc9-70d8-44ed-b338-36bfad01f8ce">
+
+### Ekran edycji notyfikacji
+<img width="215" alt="image" src="https://github.com/damirus534/NotificationSystem/assets/61499883/96726a76-4bf4-4576-94ee-50e0fc4325be">
+
+### Ekran edycji notyfikacji - Z błędem
+<img width="213" alt="image" src="https://github.com/damirus534/NotificationSystem/assets/61499883/38e5d13f-753e-4cad-8001-50e3e537ac99">
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
