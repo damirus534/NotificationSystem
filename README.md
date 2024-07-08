@@ -98,7 +98,7 @@ Zadanie 10.5 ✅
 ## Poprawki/Usprawnienia, które wprowadziłbym jakby było więcej czasu
 - Spróbowałbym jeszcze raz zrobić grida z checkboxami, który edytowałby się na bieżąco. Miałem problem z dwustronnym bindingiem. Pojawiał się błąd z read-only property, która miała poprawnie ustawiony getter i setter.
 - Dodałbym możliwość uzunięcia bezpośrednio zgłoszenia z tabeli. Miałem problem z Action-linkiem, który nie działał prawidłowo w loopie, nawet nadając unikalny context.
-- Czysto kodowo to zrobiłbym porządek z plikami css i tml przygotowywując gotowe componenty layoutów. Stworzyłbym także klasy po których bym dziedziczył aby nie kopiować tyle kodu w moich klikach Page.java
+- Czysto kodowo to zrobiłbym porządek z plikami css i tml przygotowywując gotowe componenty layoutów. Stworzyłbym także klasy po których bym dziedziczył aby nie kopiować tyle kodu w moich plikach Page.java
 - Obsługa strony 404
 - Stworzył system paginacji dla list i tabel
 
@@ -185,11 +185,11 @@ spring.jpa.hibernate.naming.physical-strategy=org.hibernate.boot.model.naming.Ph
 
 ``` 
 ## Aplikacja mobilna
-Aplikacja mobilna ma tak skonfigurowane połączenie z serwerem (bo jest lokalnie) że działa tylko z emulatora AVD. Dlatego wymagane jest także uruchomienie projektu z Android Studio IDE na wirtualnej maszynie
+Aplikacja mobilna ma tak skonfigurowane połączenie z serwerem (bo jest lokalnie) że działa tylko z emulatora AVD. Dlatego wymagane jest także uruchomienie projektu z Android Studio IDE na tej samej maszynie co aplikacje springową.
 
 # Podsumowanie
-Bardzo dobrze sie bawiłem w trakcie tworzenia tego projektu. Na pewno nabyłem umiejętności bardziej wnikliwego czytania dokumentacji, bo w przypadku Tapestry nie jest ona rozległa. Szczerze mówiąc to przed
-realizacją tego projektu nawet nie słyszałem o takim narzędziu do tworzenia stron internetowych. Z tego powodu zdecydowaną większość czasu poświęciłem właśnie na warstwę aplikacji przeglądarkowej, gdyż musiałem się tego nauczyć.
+Bardzo dobrze sie bawiłem w trakcie realizowania tego projektu. Nabyłem umiejętności bardziej wnikliwego czytania dokumentacji, zwłaszcza dla warstwy z Tapestry nie jest ona zbyt obszerna. Przed
+realizacją tego projektu nie miałem do czynienia z tym frameworkiem od Apache. Z tego powodu zdecydowaną większość czasu poświęciłem na implementacje warstwy aplikacji przeglądarkowej, gdyż musiałem opanowywać niezbędne umiejętności od zera.
 
 Życzę miłego testowania. W przypadku napotkania problemów proszę o kontakt na mój nr. telefonu.
 
