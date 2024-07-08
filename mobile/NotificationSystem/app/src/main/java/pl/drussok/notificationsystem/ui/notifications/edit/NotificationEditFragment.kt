@@ -96,6 +96,7 @@ class NotificationEditFragment : Fragment() {
                 findNavController().navigateUp()
             },
             onError = { errorMessage ->
+                setUiLoading(false)
                 binding.error.isVisible = true
                 binding.error.text = errorMessage
             }
