@@ -183,9 +183,11 @@ logging.level.org.hibernate.sql=DEBUG
 logging.level.org.springframework.jdbc.core=DEBUG
 spring.jpa.hibernate.naming.physical-strategy=org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
 
-``` 
+```
+Uruchomić aplikacje z IDE z klasy web.spring.App
+
 ## Aplikacja mobilna
-Aplikacja mobilna ma tak skonfigurowane połączenie z serwerem (bo jest lokalnie) że działa tylko z emulatora AVD. Dlatego wymagane jest także uruchomienie projektu z Android Studio IDE na tej samej maszynie co aplikacje springową.
+Aplikacja mobilna ma tak skonfigurowane połączenie z serwerem (bo jest lokalnie) że działa tylko z emulatora AVD. Dlatego wymagane jest także uruchomienie projektu z Android Studio IDE na tej samej maszynie co aplikacja webowa.
 
 # Podsumowanie
 Bardzo dobrze sie bawiłem w trakcie realizowania tego projektu. Nabyłem umiejętności bardziej wnikliwego czytania dokumentacji, zwłaszcza dla warstwy z Tapestry nie jest ona zbyt obszerna. Przed
